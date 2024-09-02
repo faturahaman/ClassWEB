@@ -50,7 +50,7 @@ if (isset($_POST["submit"])) {
             </a>
             <h1 class="text-center mb-4">Input Siswa</h1>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="name">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="nama">
                 <label for="floatingInput"><b>Nama</b></label>
             </div>
             <div class="form-floating mb-3">
