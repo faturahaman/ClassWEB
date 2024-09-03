@@ -49,27 +49,35 @@ if (isset($_POST["search"])){
 
 <body class=" border-0 bd-example m-0 border-0 bg-body-secondary">
   <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary p-3">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><b>PPLG GEN-2</b></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="datasiswa.php">Data Siswa</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="galeri.php">Galery</a>
-          </li>
-        </ul>
-      </div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary p-3" 
+style="
+  backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand " href="#"><h2><b>PPLG GEN-2</b></h2></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="datasiswa.php">Data Siswa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="galeri.php">Galery</a>
+        </li>
+      </ul> 
     </div>
-  </nav>
+  </div>
+</nav>
   <!-- end navbar -->
   <!-- tabel -->
    <div class="container my-5">
@@ -144,35 +152,47 @@ if (isset($_POST["search"])){
    </div>
   <!-- endtabel -->
    <!-- pagination bar -->
-   <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-<!-- next -->
- <?php if ($pageActive < 1) : ?>
-    <li class="page-item disabled">
-      <a href="?page<?= $pageActive - 1 ?>" class="page-link" >Previous</a>
-    </li>
-    <?php endif; ?>
-<!-- end end -->
- <!-- nav page -->
-    <li class="page-item">
-      <?php for ($i = 1; $i <= $jmlpage; $i++) : ?>
-      <?php if ($i == $pageActive) : ?>
-      <a class="page-link" href="?halaman=<?= $i ?>" ></a></li>
-      <?php else: ?>
-      <a class="page-link" href="?halaman=<?= $i ?>"></a></li>
-            
-      <?php endif; ?>
-      <?php endfor; ?>
-<!-- end navpage -->
- <!-- next page -->
- <li class="page-item">
-  <?php if ($pageActive > 1): ?>
-    <a class="page-link" href="?halaman=<?= $pageActive - 1;?>">Prev</a>
-  <?php endif; ?>
-  <?php if ($pageActive < $jmlpage): ?>
-    <a class="page-link" href="?halaman=<?= $pageActive + 1;?>">Next</a>
-  <?php endif; ?>
-</li>
+   <div class="nav-page" aria-label="Page navigation example">
+        <!-- tombol next page -->
+        <ul class="pagination justify-content-center">
+        <?php if ($pageActive > 1): ?>
+          <li class="page-item">
+            <a href="?page=<?= $pageActive - 1;?>" class="page-link">Previous</a>
+
+          </li>
+            <?php endif; ?>
+            <!-- page nav -->
+        <?php for ($i = 1; $i <= $jmlpage; $i++) : ?>
+            <?php if ($i == $pageActive) : ?>
+
+<li class="page-item">
+                  <a href="?page=<?= $i ?>" class="page-link"><?= $i ?>
+                </a>
+            <?php else : ?>
+
+              <li class="page-item">
+                  <a href="?page=<?= $i ?>" class="page-link"><?= $i ?>
+                </a>
+
+                </li>
+            <?php endif; ?>
+        <?php endfor; ?>
+
+        <!-- tombol down page -->
+        <?php if ($pageActive < 1): ?>
+          <li class="page-item">
+            <a href="?page=<?= $pageActive + 1;?>" class="page-link">Next</a>
+
+          </li>
+            <?php endif; ?>
+            <?php if( $pageActive < $jmlpage ) : ?>
+              <li class="page-item">
+            <a href="?page=<?= $pageActive + 1;?>" class="page-link">Next</a>
+
+          </li>
+<?php endif; ?>
+</ul>
+   </div> 
 
    <!-- end pagination bar -->
 
